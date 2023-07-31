@@ -7,14 +7,14 @@ export const peers = writable<string[]>([], () => {
     getPeers()
 });
 
-export const getPeers = () => {
-    isLoadingPeers.set(true)
-    return rpcRequest<NetDiscoverResult>('net_discover', { searchTime: 3 })
-        .then(({ result }) => {
-            peers.set([...new Set(result.peerIDs)])
-        })
-        .catch(console.error)
-        .finally(() => {
-            isLoadingPeers.set(false)
-        })
+export const getPeers = async () => {
+    try {
+      isLoadingPeers.set(true)
+      const resp = await rpcRequest<NetDiscoverResult>('net_discover', { searchTime: 3 })
+      peers.set([...new Set(resp.result.peerIDs)])
+    } catch (e) {
+      console.error(e)
+    } finally {
+      isLoadingPeers.set(false)
+    }
 }
