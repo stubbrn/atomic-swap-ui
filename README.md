@@ -1,4 +1,4 @@
-# ETH-XMR atomic swap
+# ETH-XMR atomic swap UI
 
 UI for [ETH-XMR atomic swap](https://github.com/AthanorLabs/atomic-swap)
 
