@@ -6,6 +6,8 @@
   import { getPeers } from '../stores/peerStore'
   //import { currentAccount, sign } from '../stores/metamask'
   import Loader from './Loader.svelte'
+  import type { TokenInfo } from '../types'
+  import TokenIcon from '$lib/TokenIcon.svelte';
 
   import { Button, Modal } from 'flowbite-svelte'
   import { Badge, Label, Input, Helper, InputAddon, ButtonGroup, Spinner } from 'flowbite-svelte'
@@ -25,6 +27,8 @@
   let error = ''
   let swapError = ''
   let swapStatus = ''
+
+  export let tokenInfo: TokenInfo
 
   $: willReceive =
     amountProvided && amountProvided > 0 && $selectedOffer?.exchangeRate
@@ -147,7 +151,7 @@
       <div class='mt-4 mb-1'>
         <Label 
           for='default-input' class='block mb-2'>
-          {getCorrespondingToken($selectedOffer.provides)} amount
+          {tokenInfo.symbol} amount
           <span>
             (Min {$selectedOffer.exchangeRate * $selectedOffer.minAmount}
             / Max {$selectedOffer.exchangeRate * $selectedOffer.maxAmount})
@@ -159,7 +163,7 @@
             id='large-input'
             size="lg"
             placeholder="Your amount ...">
-            <img slot="left" width="32" height="32" src={eth} alt="asset" class="pr-1" />
+            <TokenIcon slot="left" size={28} ticker={tokenInfo.symbol} />
         </Input>
         <Helper class="mt-2" color="red">{error}</Helper>
       </div>

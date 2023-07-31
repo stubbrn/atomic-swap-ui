@@ -7,10 +7,10 @@
   $: url = unknown
 
   async function load() {
-    if (ticker) {
+    try {
       const path = await import(`../assets/coins/${ticker.toLowerCase()}@2x.png`)
       url = path.default
-    }
+    } catch (e) {}
   }
 </script>
 

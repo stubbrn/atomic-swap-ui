@@ -8,7 +8,7 @@
   let value = '';
 
   $: filteredPairs = $pairs.filter(
-    (item) => item.asset.toLowerCase().indexOf(value.toLowerCase()) !== -1
+    (item) => item.token.symbol.toLowerCase().indexOf(value.toLowerCase()) !== -1
   );
 </script>
 
@@ -33,7 +33,7 @@
     </Card>
 
     <Card shadow={false}>
-      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Liquidity</h5>
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Reported Liquidity</h5>
       <p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
         {$liquidity} XMR
       </p>
@@ -50,17 +50,17 @@
   <Table class="border rounded">
     <TableHead>
       <TableHeadCell>Ticker</TableHeadCell>
-      <TableHeadCell>Liquidity</TableHeadCell>
+      <TableHeadCell>Reported Liquidity</TableHeadCell>
       <TableHeadCell>Offers</TableHeadCell>
       <TableHeadCell></TableHeadCell>
     </TableHead>
-    <TableBody class="divide-y">
-      {#each filteredPairs as pair (pair.asset)}
+    <TableBody>
+      {#each filteredPairs as pair (pair.token.symbol)}
       <TableBodyRow>
         <TableBodyCell>
-          <TokenIcon size="32" ticker={pair.asset} />
+          <TokenIcon size="32" ticker={pair.token.symbol} />
           <div class="ticker">
-            <p>{pair.asset}</p>
+            <p>{pair.token.symbol}</p>
             {#if pair.verified}
               <Badge color="green">Verified</Badge>
             {:else}
@@ -69,15 +69,12 @@
           </div>
         </TableBodyCell>
         <TableBodyCell>
-          <ButtonGroup>
-            <Button style="border-radius: 5px 0 0 5px;" size="xs">{pair.liquidityEth.toLocaleString()} {pair.asset}</Button>
-            <Button style="border-radius: 0px 5px 5px 0;" size="xs">{pair.liquidityXmr.toLocaleString()} XMR</Button>
-          </ButtonGroup>
+          {pair.reportedLiquidityXmr.toLocaleString()} XMR
         </TableBodyCell>
         <TableBodyCell>{pair.offers}</TableBodyCell>
         <TableBodyCell>
           <ButtonGroup>
-            <Button href="/offers/{pair.asset.toLocaleLowerCase()}" color="light" size="xs">SEE OFFERS</Button>
+            <Button href="/offers/{pair.ethAsset.toLocaleLowerCase()}" color="light" size="xs">SEE OFFERS</Button>
           </ButtonGroup>
         </TableBodyCell>
       </TableBodyRow>
