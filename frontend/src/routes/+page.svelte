@@ -12,7 +12,8 @@
   );
 </script>
 
-<div class="pairs" style="width: 100%;">
+{#if filteredPairs.length > 0}
+<div class="pairs" style="width: 100%; height: 100%;">
   <div class="search">
     <Search size="md" bind:value />
   </div>
@@ -46,7 +47,6 @@
     </Card>
   </div>
 
-  {#if filteredPairs.length > 0}
   <Table class="border rounded">
     <TableHead>
       <TableHeadCell>Ticker</TableHeadCell>
@@ -84,10 +84,12 @@
       {/each}
     </TableBody>
   </Table>
-  {:else}
-  <p class="text-center">No pairs found.</p>
-  {/if}
 </div>
+{:else}
+<div class="flex flex-auto justify-center items-center" style="height: 100vh;">
+  <p class="text-center">No pairs found.</p>
+</div>
+{/if}
 
 <style lang="postcss">
 .pairs {

@@ -15,7 +15,7 @@
 <div class="peers">
   <p>{$peers.length} Peers</p>
   <br>
-	<Table>
+	<Table class="border rounded">
 		<TableHead>
 			<TableHeadCell>Id</TableHeadCell>
 			<TableHeadCell>Offers</TableHeadCell>

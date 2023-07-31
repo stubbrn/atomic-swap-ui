@@ -19,7 +19,7 @@
 <Sidebar style="width: auto;">
     <SidebarWrapper style="height: 100%;" class="sidebar-wrapper fixed">
       <SidebarGroup>
-        <img width="75" src={atomic} alt="logo" class="mx-auto mb-5" />
+        <img width="75" src={transfer} alt="logo" class="mx-auto mb-5" style="opacity: 0.75;" />
         <SidebarItem label="Trade" href="/" active={activeUrl === '/' || activeUrl.includes('/offers') }>
           <svelte:fragment slot="icon">
             <img src={transfer} alt="trade" width="24" />
@@ -65,5 +65,7 @@
   :global(.sidebar-wrapper) {
     /*box-shadow: 0px 0px 15px #0001;*/
     z-index: 9;
+    background: #fff;
+    border-right: 1px solid #eee;
   }
 </style>
