@@ -8,10 +8,10 @@
   import transfer from '../assets/icons/transfer.svg'
   import network from '../assets/icons/network.svg'
 
-    import { Badge, Indicator } from 'flowbite-svelte'
+  import { Badge, Indicator } from 'flowbite-svelte'
 
-    import { page } from '$app/stores';
-    $: activeUrl = $page.url.pathname;
+  import { page } from '$app/stores';
+  $: activeUrl = $page.url.pathname;
 
   let spanClass = 'flex-1 ml-3 whitespace-nowrap';
 </script>

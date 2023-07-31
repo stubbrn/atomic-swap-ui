@@ -10,7 +10,8 @@
   import { Button, Modal } from 'flowbite-svelte'
   import { Badge, Label, Input, Helper, InputAddon, ButtonGroup, Spinner } from 'flowbite-svelte'
   
-  import { CheckSolid, XmarkSolid } from 'svelte-awesome-icons';
+  import checkmark from '../assets/icons/check-circle.svg'
+  import failed from '../assets/icons/close-circle.svg'
   
   import eth from '../assets/coins/eth.png'
   
@@ -126,14 +127,14 @@
         </div>
       {:else if isSuccess}
         <div class="flexBox text-center justify-center">
-          <CheckSolid class="m-auto mb-3 w-16 h-16" style="color: #0c4;" />
+          <img src={checkmark} alt="checkmark" width="64" class="m-auto mb-2"/>
           <p class="successMessage">
             You received <b>{willReceive} {$selectedOffer.provides}</b>
           </p>
         </div>
       {:else if !!swapError}
         <div class="flexBox text-center justify-center">
-          <XmarkSolid class="m-auto mb-3 w-16 h-16" style="color: #e40;" /> 
+          <img src={failed} alt="failed" width="64" class="m-auto mb-2" />
           <p class="errorMessage">
             {swapError}
           </p>
