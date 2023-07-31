@@ -1,8 +1,6 @@
-# README
+# ETH-XMR atomic swap
 
-## About
-
-This is the official Wails Svelte template.
+UI for [ETH-XMR atomic swap](https://github.com/AthanorLabs/atomic-swap)
 
 ## Live Development
 
