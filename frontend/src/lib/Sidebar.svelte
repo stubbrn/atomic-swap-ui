@@ -40,7 +40,7 @@
             <img src={wallet} alt="wallet" width="24" />
           </svelte:fragment>
         </SidebarItem>
-        <SidebarItem label="Peers">
+        <SidebarItem label="Peers" href="/peers" active={activeUrl === '/peers'}>
           <svelte:fragment slot="icon">
             <img src={network} alt="network" width="24" />
           </svelte:fragment>

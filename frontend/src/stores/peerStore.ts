@@ -10,7 +10,9 @@ export const peers = writable<string[]>([], () => {
 export const getPeers = () => {
     isLoadingPeers.set(true)
     return rpcRequest<NetDiscoverResult>('net_discover', { searchTime: 3 })
-        .then(({ result }) => { peers.set([...new Set(result.peerIDs)]) })
+        .then(({ result }) => {
+            peers.set([...new Set(result.peerIDs)])
+        })
         .catch(console.error)
         .finally(() => {
             isLoadingPeers.set(false)
